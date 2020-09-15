@@ -7,6 +7,7 @@ public class Book {
     private Category category;
     private String ISBN;
 
+    //W sumie builder nie jest potrzebny, ale nie jestem pewien czy wszystko powinno być niezmienne, więc zostawię w razie czego
     public Book(final BookBuilder builder){
         this.titleOfBook = builder.titleOfBook;
         this.author = builder.author;

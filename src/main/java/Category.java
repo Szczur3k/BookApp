@@ -1,9 +1,9 @@
 public enum Category {
 
-    PROGRAMOWANIE,
-    PODSTAWY,
+    DOCKER,
+    PYTHON,
     JAVA,
-    PYTHON
-
+    MACHINE_LEARNING,
+    ARCHITEKTURA
 
 }
