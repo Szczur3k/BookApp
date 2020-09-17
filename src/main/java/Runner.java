@@ -1,5 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.Comparator.*;
 
 public class Runner {
     public static void main(String[] args) {
@@ -15,6 +18,122 @@ public class Runner {
         libraryWithBooks.add(new Book(new Book.BookBuilder("Uczenie maszynowe", new Author("Aurelien Geron"), 528, Category.MACHINE_LEARNING, "OReailly", 2018, "978-83-283-4373-3")));
         libraryWithBooks.add(new Book(new Book.BookBuilder("Efektywny Python", new Author("Brett Slatkin"), 232, Category.PYTHON, "Helion", 2015, "978-83-283-1540-2")));
         libraryWithBooks.add(new Book(new Book.BookBuilder("Czysta architektura", new Author("Robert C. Martin"), 386, Category.ARCHITEKTURA, "Helion", 2018, "978-83-283-4225-5")));
+
+        String operatorMenu;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Witaj w księgarni");
+        System.out.println("Wybierz jedną z poniżej dostępnych opcji poprzez wpisanie w konsolę wybranej liczby");
+        System.out.println("1. Wypisz książkę z największą liczbą stron");
+        System.out.println("2. Posortuj i wypisz książki według roku wydania (od najnowszej)");
+        System.out.println("3. Wypisz książki w zależności od podanego typu");
+        System.out.println("4. Wypisz książkę w zależności od podanego numeru ISBN");
+        System.out.println("5. Wypisz książki w zależności od podanego autora");
+        System.out.println();
+        System.out.print("Twój wybór to: ");
+        operatorMenu = scanner.nextLine();
+
+        switch (operatorMenu){
+            case ("1"):
+                List<Book> maxPages = libraryWithBooks.stream()
+                        .sorted(comparing(Book::getNumberOfPages).reversed())
+                        .collect(Collectors.toList());
+
+                System.out.println(maxPages.get(0));
+                break;
+
+
+            case ("2"):
+                List<Book> booksWithOrderOfYearOfPublishment = libraryWithBooks.stream()
+                        .sorted(Comparator.comparing(Book::getYearOfPublishment).reversed())
+                        .collect(Collectors.toList());
+
+                System.out.println(booksWithOrderOfYearOfPublishment);
+                break;
+
+
+            case ("3"):
+                System.out.println("Wybierz jedną z kategorii: DOCKER, PYTHON, JAVA, MACHINE LEARNING, ARCHITEKTURA");
+                String operatorCategory = scanner.nextLine().toUpperCase();
+
+                System.out.println();
+
+                if (operatorCategory.equals("MACHINELEARNING") || operatorCategory.equals("MACHINE LEARNING")){
+                    System.out.println("To wszystkie książki z kategorii MACHINE LEARNING");
+                    System.out.println();
+                    libraryWithBooks.stream()
+                            .filter(book -> book.getCategory().equals(Category.MACHINE_LEARNING))
+                            .forEach(System.out::println);
+                }
+                else {
+                    operatorCategory = operatorCategory.replaceAll(" ", "");
+
+                    System.out.println("To wszystkie książki z kategorii " + operatorCategory + ": ");
+                    System.out.println();
+                    for (Book libraryWithBook : libraryWithBooks) {
+                        if (libraryWithBook.getCategory().equals(Category.valueOf(operatorCategory))) {
+                            System.out.println(libraryWithBook);
+                        }
+                    }
+                }
+                System.out.println();
+
+                break;
+
+//                switch (operatorCategory) {
+//                    case ("DOCKER"):
+//                        System.out.println("To wszystkie książki z kategorią DOCKER: ");
+//                        System.out.println();
+//                        libraryWithBooks.stream()
+//                                .filter(book -> book.getCategory().equals(Category.DOCKER))
+//                                .forEach(System.out::println);
+//                        break;
+//
+//                    case ("PYTHON"):
+//                        System.out.println("To wszystkie książki z kategorią PYTHON: ");
+//                        System.out.println();
+//                        libraryWithBooks.stream()
+//                                .filter(book -> book.getCategory().equals(Category.PYTHON))
+//                                .forEach(System.out::println);
+//                        break;
+//
+//                    case ("JAVA"):
+//                        System.out.println("To wszystkie książki z kategorią JAVA: ");
+//                        System.out.println();
+//                        libraryWithBooks.stream()
+//                                .filter(book -> book.getCategory().equals(Category.JAVA))
+//                                .forEach(System.out::println);
+//                        break;
+//
+//                    case ("MACHINELEARNING"):
+//                        System.out.println("To wszystkie książki z kategorią MACHINE LEARNING: ");
+//                        System.out.println();
+//                        libraryWithBooks.stream()
+//                                .filter(book -> book.getCategory().equals(Category.MACHINE_LEARNING))
+//                                .forEach(System.out::println);
+//                        break;
+//
+//                    case ("ARCHITEKTURA"):
+//                        System.out.println("To wszystkie książki z kategorią ARCHITEKTURA: ");
+//                        System.out.println();
+//                        libraryWithBooks.stream()
+//                                .filter(book -> book.getCategory().equals(Category.valueOf(operatorCategory)))
+//                                .forEach(System.out::println);
+//                        break;
+//                }
+
+            case ("4"):
+                System.out.println("Podaj numer ISBN z myślnikami np: 978-83-283-2480-0");
+                String operatorISBN = scanner.nextLine().replaceAll(" ", "").toUpperCase();
+                System.out.println("Podaj ISBN: " + operatorISBN);
+                System.out.println();
+                System.out.println("Książka z podanym numerem ISBN to: ");
+                List<Book> bookWithCorrectISBN = libraryWithBooks.stream()
+                        .filter(book -> book.getISBN().equals(operatorISBN))
+                        .collect(Collectors.toList());
+
+                System.out.println(bookWithCorrectISBN);
+        }
 
 
 
