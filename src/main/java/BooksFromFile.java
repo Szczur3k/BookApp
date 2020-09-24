@@ -6,15 +6,18 @@ import java.util.List;
 
 final public class BooksFromFile {
 
+    //givin instance of a path. Static List is for Runner. We dont need to change it or making new instance of it.
     String filePath = "src/main/resources/dane.txt";
     static List<Book> bookInFile = new ArrayList<>();
 
 
     public void readBooksFromFile() {
 
+        //Loading file from path and reading ONE LINE of it
         try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath))) {
             String textLine = fileReader.readLine();
 
+            //Loop for reading line and split it with ";" sign. Then each of text before sign set to the Book.builder. On the end of Loop we are building Book.
             while (textLine != null) {
                 textLine = fileReader.readLine();
                 Book.BookBuilder bookBuilder = new Book.BookBuilder();
@@ -63,10 +66,5 @@ final public class BooksFromFile {
         }
 
     }
-
-    public void showBooksFromFile(){
-        bookInFile.forEach(System.out::println);
-    }
-
 
 }
