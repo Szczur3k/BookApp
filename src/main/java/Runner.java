@@ -5,19 +5,9 @@ import static java.util.Comparator.*;
 public class Runner {
     public static void main(String[] args) {
 
-        List<Book> libraryWithBooks = new ArrayList<>();
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Docker. Projektowanie i wdrażanie aplikacji", new Author(Collections.singletonList("Jarosław Krochmalski")), 224, Category.DOCKER, "Packt", 2018, "978-83-283-3534-9")));
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Docker dla praktyków", new Author(Arrays.asList("Russ McKendrick", "Pethuru Raj")), 248, Category.DOCKER, "Helion", 2017, "978-83-283-3972-9")));
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Docker. Programowanie aplikacji dla zaawansowanych", new Author(Arrays.asList("Russ McKendrick", "Scott Gallagher")), 320, Category.DOCKER, "Packt", 2018, "978-83-283-4308-5")));
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Python. Uczenie maszynowe", new Author(Collections.singletonList("Sebastian Raschka")), 416, Category.PYTHON, "Packt", 2014, "978-83-283-3613-1")));
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Nowoczesne receptury w Javie", new Author(Collections.singletonList("Ken Kousen")), 264, Category.JAVA, "Packt", 2018, "978-83-283-4073-2")));
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Java. Podstawy. Wydanie X", new Author(Collections.singletonList("Cay S. Horstmann")), 872, Category.JAVA, "Helion", 2016, "978-83-283-2480-0")));
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Java. Efektywne programowanie", new Author(Collections.singletonList("Joshua Bloch")), 408, Category.JAVA, "OReailly", 2018, "978-83-283-4576-8")));
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Uczenie maszynowe", new Author(Collections.singletonList("Aurelien Geron")), 528, Category.MACHINE_LEARNING, "OReailly", 2018, "978-83-283-4373-3")));
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Efektywny Python", new Author(Collections.singletonList("Brett Slatkin")), 232, Category.PYTHON, "Helion", 2015, "978-83-283-1540-2")));
-        libraryWithBooks.add(new Book(new Book.BookBuilder("Czysta architektura", new Author(Collections.singletonList("Robert C. Martin")), 386, Category.ARCHITEKTURA, "Helion", 2018, "978-83-283-4225-5")));
-
-
+        BooksFromFile booksFromFile = new BooksFromFile();
+        booksFromFile.readBooksFromFile();
+        List<Book> libraryWithBooks = BooksFromFile.bookInFile;
 
         String operatorMenu;
         String statementForWhile = "n";
