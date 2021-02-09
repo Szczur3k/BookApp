@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.List;
 
 public class Author {
@@ -8,7 +7,7 @@ public class Author {
         this.authors = authors;
     }
 
-    public List<String> getNamesOfAuthorsList() {
+    public List<String> getNamesOfAllAuthors() {
         return authors;
     }
 

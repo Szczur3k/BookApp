@@ -8,7 +8,7 @@ public class Book {
     private String ISBN;
 
     //W sumie builder nie jest potrzebny, ale nie jestem pewien czy wszystko powinno być niezmienne, więc zostawię w razie czego
-    public Book(final BookBuilder builder){
+    public Book(final BookBuilder builder) {
         this.titleOfBook = builder.titleOfBook;
         this.author = builder.author;
         this.yearOfPublishment = builder.yearOfPublishment;
@@ -18,14 +18,14 @@ public class Book {
         this.ISBN = builder.ISBN;
     }
 
-    static class BookBuilder{
-        private  String titleOfBook;
-        private  Author author;
-        private  int numberOfPages;
-        private  Category category;
-        private  String publisher;
-        private  int yearOfPublishment;
-        private  String ISBN;
+    static class BookBuilder {
+        private String titleOfBook;
+        private Author author;
+        private int numberOfPages;
+        private Category category;
+        private String publisher;
+        private int yearOfPublishment;
+        private String ISBN;
 
 
         BookBuilder(String titleOfBook, Author author, int numberOfPages, Category category, String publisher, int yearOfPublishment, String isbn) {
@@ -38,7 +38,7 @@ public class Book {
             ISBN = isbn;
         }
 
-        BookBuilder(){
+        BookBuilder() {
         }
 
         public void setTitleOfBook(String titleOfBook) {
@@ -97,7 +97,7 @@ public class Book {
             return ISBN;
         }
 
-        public Book build(){
+        public Book build() {
             return new Book(this);
         }
     }
@@ -134,11 +134,11 @@ public class Book {
     @Override
     public String toString() {
         return "TitleOfBook: '" + titleOfBook + '\'' + '\n' +
-                "Author: '" + author.getNamesOfAuthorsList() + '\'' + '\n' +
+                "Author: '" + author.getNamesOfAllAuthors() + '\'' + '\n' +
                 "Year of publishment: '" + yearOfPublishment + '\'' + '\n' +
                 "Number of pages: '" + numberOfPages + '\'' + '\n' +
                 "Publisher: '" + publisher + '\'' + '\n' +
-                "Category: '" + category  + '\'' + '\n' +
+                "Category: '" + category + '\'' + '\n' +
                 "ISBN: '" + ISBN + '\'' + '\n';
 
     }
