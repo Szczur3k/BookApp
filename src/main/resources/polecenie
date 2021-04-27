@@ -1,0 +1,25 @@
+Book App
+
+    Stworzyć aplikacje do przetwarzania danych o książkach. Aplikacja powinna posiadać menu
+        obsługiwane przez wiersz poleceń. W momencie uruchomienia aplikacji należy podać ścieżke do
+        pliku z danymi. Dane ze wskazanego pliku należy załadować do pamięci.
+        Menu
+        W menu powinny pojawić się opcje:
+        1. Wypisz książkę z największą liczbą stron
+        2. Posortuj i wypisz książki według roku wydania (od najnowszej)
+        3. Wypisz książki w zależności od podanego typu
+        4. Wypisz książkę w zależności od podanego numeru ISBN
+        5. Wypisz książki w zależności od podanego autora
+        6. Zapisz do wskazanego pliku posortowane alfabetycznie (według tytułu) książki
+        Format
+        Dane posiadają format:
+        Tytul;Autor;Rok wydania;Ilosc stron;Wydawnictwo;Rodzaj;ISBN
+        Wymagania techniczne
+        • Java 8
+        • Maven
+        • Testy (dla głównych funkcjonalności) - JUnit i AssertJ
+        • Pokrycie kodu testami (CodeCoverage)
+        • CheckStyle
+        • Kod po angielsku
+        • Obsługa błędów (podanie złego numeru w menu, złe dane)
+        • Musi działać jako osobny jar

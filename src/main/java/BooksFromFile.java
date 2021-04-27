@@ -11,7 +11,7 @@ final public class BooksFromFile {
     static List<Book> booksList = new ArrayList<>();
 
 
-    public void readBooksFromFile() {
+    public void readBooksFromFile(String booksFilePath) {
 
         //Loading file from path and reading ONE LINE of it
         try (BufferedReader fileReader = new BufferedReader(new FileReader(booksFilePath))) {
@@ -27,46 +27,44 @@ final public class BooksFromFile {
         } catch (Exception e) {
             e.getStackTrace();
         }
-
     }
 
     private void saveBookFromFile(String[] splitetTextInFile) {
-        Book.BookBuilder bookBuilder = new Book.BookBuilder();
+        Book book = new Book();
 
-        if (bookBuilder.getTitleOfBook() == null) {
-            bookBuilder.setTitleOfBook(splitetTextInFile[0]);
+        if (book.getTitleOfBook() == null) {
+            book.setTitleOfBook(splitetTextInFile[0]);
         }
 
-        if (bookBuilder.getAuthor() == null) {
+        if (book.getAuthor() == null) {
             if (splitetTextInFile[1].contains(",")) {
                 String[] authorsInFile = splitetTextInFile[1].split(",");
-                bookBuilder.setAuthor(new Author(Arrays.asList(authorsInFile)));
+                book.setAuthor(new Author(Arrays.asList(authorsInFile)));
             } else {
-                bookBuilder.setAuthor(new Author(Collections.singletonList(splitetTextInFile[1])));
+                book.setAuthor(new Author(Collections.singletonList(splitetTextInFile[1])));
             }
         }
 
-        if (bookBuilder.getYearOfPublishment() == 0) {
-            bookBuilder.setYearOfPublishment(Integer.parseInt(splitetTextInFile[2]));
+        if (book.getYearOfPublishment() == 0) {
+            book.setYearOfPublishment(Integer.parseInt(splitetTextInFile[2]));
         }
 
-        if (bookBuilder.getNumberOfPages() == 0) {
-            bookBuilder.setNumberOfPages(Integer.parseInt(splitetTextInFile[3]));
+        if (book.getNumberOfPages() == 0) {
+            book.setNumberOfPages(Integer.parseInt(splitetTextInFile[3]));
         }
 
-        if (bookBuilder.getPublisher() == null) {
-            bookBuilder.setPublisher(splitetTextInFile[4]);
+        if (book.getPublisher() == null) {
+            book.setPublisher(splitetTextInFile[4]);
         }
 
-        if (bookBuilder.getCategory() == null) {
-            bookBuilder.setCategory(Category.valueOf(splitetTextInFile[5].toUpperCase().replace(" ", "_")));
+        if (book.getCategory() == null) {
+            book.setCategory(Category.valueOf(splitetTextInFile[5].toUpperCase().replace(" ", "_")));
         }
 
-        if (bookBuilder.getISBN() == null) {
-            bookBuilder.setISBN(splitetTextInFile[6]);
+        if (book.getISBN() == null) {
+            book.setISBN(splitetTextInFile[6]);
         }
 
-        Book book = new Book(bookBuilder);
         booksList.add(book);
     }
 

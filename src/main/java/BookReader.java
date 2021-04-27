@@ -185,7 +185,7 @@ public class BookReader {
     //Making Instance of readingBooksFromFile and using method for reading it. In the method .redBooksFromFile() we are adding Books to the list which is called here (beacuse of static field)
     private void getBooksFromFile() {
         BooksFromFile booksFromFile = new BooksFromFile();
-        booksFromFile.readBooksFromFile();
+        booksFromFile.readBooksFromFile("src/main/resources/dane.txt");
         allBooksInLibrary = BooksFromFile.booksList;
     }
 
