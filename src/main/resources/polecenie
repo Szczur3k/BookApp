@@ -14,6 +14,8 @@ Book App
         Format
         Dane posiadają format:
         Tytul;Autor;Rok wydania;Ilosc stron;Wydawnictwo;Rodzaj;ISBN
+
+
         Wymagania techniczne
         • Java 8
         • Maven

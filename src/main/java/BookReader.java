@@ -11,16 +11,19 @@ public class BookReader {
     String runUntilUserSaysY = "n";
     Scanner scanner = new Scanner(System.in);
 
+    public BookReader() {
+        getBooksFromFile();
+    }
+
     public void bookChoice() {
         while (runUntilUserSaysY.equals("n")) {
             menuText();
-            getBooksFromFile();
             menuChoice = scanner.nextLine();
-            runMenuChoice();
+            runMenuChoice(menuChoice);
         }
     }
 
-    private void runMenuChoice() {
+    public void runMenuChoice(String menuChoice) {
         switch (menuChoice) {
             case ("1"):
                 getBookWithMaxPages();

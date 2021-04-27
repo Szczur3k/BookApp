@@ -7,9 +7,11 @@ import java.util.List;
 final public class BooksFromFile {
 
     //given instance of a path. Static List is for Runner. We dont need to change it or making new instance of it.
-    String booksFilePath = "src/main/resources/dane.txt";
     static List<Book> booksList = new ArrayList<>();
 
+    public BooksFromFile() {
+        booksList.clear();
+    }
 
     public void readBooksFromFile(String booksFilePath) {
 
